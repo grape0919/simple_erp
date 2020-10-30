@@ -33,7 +33,7 @@ class Ui_MainWindow(QMainWindow):
         MainWindow.setFont(font)
         self.centralwidget = QWidget(MainWindow)
         self.label = QLabel(self.centralwidget)
-        self.label.setGeometry(QRect(20, 20, 101, 31))
+        self.label.setGeometry(QRect(20, 20, 130, 35))
         font = QFont()
         font.setFamily("NanumGothic")
         font.setPointSize(18)
