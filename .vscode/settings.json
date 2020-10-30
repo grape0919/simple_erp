@@ -1,0 +1,12 @@
+{
+    "sqltools.connections": [
+
+        {
+            "previewLimit": 50,
+            "driver": "SQLite",
+            "database": "C:/Users/DELL/PLAYGROUND/hkdevstudio/Cople/rdbms/mbr.db",
+            "name": "mbr"
+        }
+    ],
+    "python.pythonPath": "C:\\Users\\DELL\\DEV\\Anaconda3\\python.exe"
+}

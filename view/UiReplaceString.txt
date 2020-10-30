@@ -1,0 +1,12 @@
+^        (self.)*\w+\.setObjectName\("\w+"\)$\n
+
+
+_translate\("MainWindow", ("[\S\s]+")\)
+$1
+
+
+from PyQt5.QtWidgets import QMainWindow, QWidget, QLabel, QPushButton \
+                            , QTabWidget, QApplication
+
+from PyQt5.QtCore import QRect, QMetaObject
+from PyQt5.QtGui import QFont

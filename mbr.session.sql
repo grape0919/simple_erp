@@ -1,0 +1,1 @@
+select MBR_ID, TALK from MBR_INFO where MBR_ID = 'ghdry2563@gmail.com'

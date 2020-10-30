@@ -1,0 +1,2 @@
+('zzzzx03@nate.com', '1')
+('zzxz49@naver.com', '2')
