@@ -107,25 +107,25 @@ class WindowClass(Ui_MainWindow) :
                 if(mylist[i][1] != ''):
                     checked = rdbms.checkID(mylist[i][1])
                     if(checked != None):
-                        if(checked[0]):
-                            doubleList.append((mylist[i][1],checked[1],str(mylist[i][2])))
-                        else:
-                            mbr = Member()
-                            mbr.MBR_ID = mylist[i][1]
-                            mbr.TALK = mylist[i][2]
-                            mbr.COIN = mylist[i][3]
-                            mbr.PURCHASE = mylist[i][4]
-                            mbr.DEPOSIT = mylist[i][5]
-                            mbr.SALE = mylist[i][6]
-                            mbr.WITHDRAW = mylist[i][7]
-                            mbr.RESERVE = mylist[i][8]
-                            mbr.TOTAL_PUR = mylist[i][9]
-                            mbr.TOTAL_SAL = mylist[i][10]
-                            mbr.REVENUE = mylist[i][11]
-                            mbr.RATING = mylist[i][12]
-                            mbr.WALLET = mylist[i][13]
+                    if(checked[0]):
+                        doubleList.append((mylist[i][1],checked[1]))
+                    else:
+                        mbr = Member()
+                        mbr.MBR_ID = mylist[i][1]
+                        mbr.TALK = mylist[i][2]
+                        mbr.COIN = mylist[i][3]
+                        mbr.PURCHASE = mylist[i][4]
+                        mbr.DEPOSIT = mylist[i][5]
+                        mbr.SALE = mylist[i][6]
+                        mbr.WITHDRAW = mylist[i][7]
+                        mbr.RESERVE = mylist[i][8]
+                        mbr.TOTAL_PUR = mylist[i][9]
+                        mbr.TOTAL_SAL = mylist[i][10]
+                        mbr.REVENUE = mylist[i][11]
+                        mbr.RATING = mylist[i][12]
+                        mbr.WALLET = mylist[i][13]
 
-                            rdbms.excute_sql(mbr.toInsertSql())
+                        rdbms.excute_sql(mbr.toInsertSql())
 
             self.showData()
 
@@ -138,15 +138,6 @@ class WindowClass(Ui_MainWindow) :
                 fw = open(outputFile, "w")
                 fw.write(strList)
                 fw.close()
-
-                self.tableWidget2.setRowCount(len(doubleList))
-
-                for i in range(self.tableWidget2.rowCount()):
-                    print(doubleList[i])
-                    self.tableWidget2.setItem(i, 0, QTableWidgetItem(doubleList[i][0]))
-                    self.tableWidget2.setItem(i, 1, QTableWidgetItem(doubleList[i][1]))
-                    self.tableWidget2.setItem(i, 2, QTableWidgetItem(doubleList[i][2]))
-
                 QMessageBox.about(self, "일괄업로드", "업로드를 완료하였지만, 일부 중복데이터가 존재합니다.\n아래 파일을 확인하세요.\n"+outputFile)
 
     def closeEvent(self, event):

@@ -108,7 +108,7 @@ class WindowClass(Ui_MainWindow) :
                     checked = rdbms.checkID(mylist[i][1])
                     if(checked != None):
                         if(checked[0]):
-                            doubleList.append((mylist[i][1],checked[1],str(mylist[i][2])))
+                            doubleList.append((mylist[i][1],checked[1],mylist[i][2]))
                         else:
                             mbr = Member()
                             mbr.MBR_ID = mylist[i][1]

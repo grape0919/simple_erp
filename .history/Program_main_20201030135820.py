@@ -20,7 +20,6 @@ class WindowClass(Ui_MainWindow) :
         self.button_del.clicked.connect(self.delMbr)
         self.button_modi.clicked.connect(self.modiMbr)
         self.button_upload.clicked.connect(self.upload)
-        self.button_search.clicked.connect(self.search)
 
         if not self.showData():
             self.showData()
@@ -106,26 +105,26 @@ class WindowClass(Ui_MainWindow) :
             for i in range(1, len(mylist)):
                 if(mylist[i][1] != ''):
                     checked = rdbms.checkID(mylist[i][1])
-                    if(checked != None):
-                        if(checked[0]):
-                            doubleList.append((mylist[i][1],checked[1],str(mylist[i][2])))
-                        else:
-                            mbr = Member()
-                            mbr.MBR_ID = mylist[i][1]
-                            mbr.TALK = mylist[i][2]
-                            mbr.COIN = mylist[i][3]
-                            mbr.PURCHASE = mylist[i][4]
-                            mbr.DEPOSIT = mylist[i][5]
-                            mbr.SALE = mylist[i][6]
-                            mbr.WITHDRAW = mylist[i][7]
-                            mbr.RESERVE = mylist[i][8]
-                            mbr.TOTAL_PUR = mylist[i][9]
-                            mbr.TOTAL_SAL = mylist[i][10]
-                            mbr.REVENUE = mylist[i][11]
-                            mbr.RATING = mylist[i][12]
-                            mbr.WALLET = mylist[i][13]
+                    
+                    if(checked[0]):
+                        doubleList.append((mylist[i][1],checked[1]))
+                    else:
+                        mbr = Member()
+                        mbr.MBR_ID = mylist[i][1]
+                        mbr.TALK = mylist[i][2]
+                        mbr.COIN = mylist[i][3]
+                        mbr.PURCHASE = mylist[i][4]
+                        mbr.DEPOSIT = mylist[i][5]
+                        mbr.SALE = mylist[i][6]
+                        mbr.WITHDRAW = mylist[i][7]
+                        mbr.RESERVE = mylist[i][8]
+                        mbr.TOTAL_PUR = mylist[i][9]
+                        mbr.TOTAL_SAL = mylist[i][10]
+                        mbr.REVENUE = mylist[i][11]
+                        mbr.RATING = mylist[i][12]
+                        mbr.WALLET = mylist[i][13]
 
-                            rdbms.excute_sql(mbr.toInsertSql())
+                        rdbms.excute_sql(mbr.toInsertSql())
 
             self.showData()
 
@@ -138,15 +137,6 @@ class WindowClass(Ui_MainWindow) :
                 fw = open(outputFile, "w")
                 fw.write(strList)
                 fw.close()
-
-                self.tableWidget2.setRowCount(len(doubleList))
-
-                for i in range(self.tableWidget2.rowCount()):
-                    print(doubleList[i])
-                    self.tableWidget2.setItem(i, 0, QTableWidgetItem(doubleList[i][0]))
-                    self.tableWidget2.setItem(i, 1, QTableWidgetItem(doubleList[i][1]))
-                    self.tableWidget2.setItem(i, 2, QTableWidgetItem(doubleList[i][2]))
-
                 QMessageBox.about(self, "일괄업로드", "업로드를 완료하였지만, 일부 중복데이터가 존재합니다.\n아래 파일을 확인하세요.\n"+outputFile)
 
     def closeEvent(self, event):
@@ -251,19 +241,6 @@ class WindowClass(Ui_MainWindow) :
             for j, c in enumerate(d):
                 self.tableWidget.setItem(i, j, QTableWidgetItem(c))
 
-    def search(self):
-        print("search")
-        search_id = self.edit_search.text()
-        if search_id != "":
-            for i in range(self.tableWidget.rowCount()):
-                if(self.tableWidget.item(i,0).text() == self.edit_search.text()):
-                    self.tableWidget.setCurrentCell(i,1)
-                    return
-            
-            QMessageBox.warning(self, "검색", "해당 ID가 존재하지 않습니다.")
-        else:
-            QMessageBox.warning(self, "검색", "검색할 ID를 입력해주세요.")
-
 if __name__ == "__main__" :
     #QApplication : 프로그램을 실행시켜주는 클래스
     app = QApplication(sys.argv) 
@@ -271,7 +248,7 @@ if __name__ == "__main__" :
     #WindowClass의 인스턴스 생성
     myWindow = WindowClass()
     #프로그램 화면을 보여주는 코드
-    myWindow.showMaximized()
+    myWindow.showMaximumSize()
 
     #프로그램을 이벤트루프로 진입시키는(프로그램을 작동시키는) 코드
     app.exec_()

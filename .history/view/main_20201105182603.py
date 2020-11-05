@@ -65,6 +65,8 @@ class Ui_MainWindow(QMainWindow):
         self.tabWidget.setGeometry(QRect(10, 70, MainWindow.size().width()-15, MainWindow.size().height() - 180))
         self.tab = QWidget()
         self.tab.layout = QVBoxLayout()
+        self.tab2 = QWidget()
+        self.tab2.layout = QVBoxLayout()
         self.tabWidget.addTab(self.tab, "회원 목록")
         self.tableWidget = QTableWidget(self.tab)
         self.tableWidget.setGeometry(QRect(0, 0, self.tabWidget.size().width()-5, self.tabWidget.size().height()-25))
@@ -74,22 +76,11 @@ class Ui_MainWindow(QMainWindow):
 
         self.tableWidget.setHorizontalHeaderLabels(["회원 ID", "단톡방", "코인명", "구매", "입금", "판매", "출근"
         , "보유잔량", "총구매금액", "총판매금액", "수익", "평단가", "지갑주소"])
-
-        self.tab2 = QWidget()
-        self.tab2.layout = QVBoxLayout()
-        self.tabWidget.addTab(self.tab2, "중복 회원")
-
-        self.label_updateDate = QLabel(self.tab2)
-        self.label_updateDate.setGeometry(QRect(20, 0, 250, 35))
-        self.label_updateDate.setStyleSheet("color: #535353;")
-
-        self.tableWidget2 = QTableWidget(self.tab2)
-        self.tableWidget2.setGeometry(QRect(0, 30, self.tabWidget.size().width()-5, self.tabWidget.size().height()-55))
+        self.tableWidget2 = QTableWidget(self.tab)
+        self.tableWidget2.setGeometry(QRect(0, 0, self.tabWidget.size().width()-5, self.tabWidget.size().height()-25))
         self.tableWidget2.setColumnCount(3)
         self.tableWidget2.setRowCount(0)
         self.tableWidget2.setSelectionBehavior(QAbstractItemView.SelectRows)
-        
-        self.tableWidget2.setHorizontalHeaderLabels(["회원 ID", "현재 단톡방", "중복 단톡방"])
         
         
         self.edit_search = QLineEdit(self.centralwidget)
@@ -116,7 +107,6 @@ class Ui_MainWindow(QMainWindow):
         self.button_del.setText("회원 삭제")
         self.button_upload.setText("일괄 업로드")
         self.button_search.setText("검색")
-        self.label_updateDate.setText("업로드 날짜 : ")
         self.edit_search.setPlaceholderText("회원 ID")
         # self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), "Tab 1")
         # self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), "Tab 2")

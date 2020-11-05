@@ -108,7 +108,7 @@ class WindowClass(Ui_MainWindow) :
                     checked = rdbms.checkID(mylist[i][1])
                     if(checked != None):
                         if(checked[0]):
-                            doubleList.append((mylist[i][1],checked[1],str(mylist[i][2])))
+                            doubleList.append((mylist[i][1],checked[1],mylist[i][2]))
                         else:
                             mbr = Member()
                             mbr.MBR_ID = mylist[i][1]
@@ -141,11 +141,8 @@ class WindowClass(Ui_MainWindow) :
 
                 self.tableWidget2.setRowCount(len(doubleList))
 
-                for i in range(self.tableWidget2.rowCount()):
-                    print(doubleList[i])
-                    self.tableWidget2.setItem(i, 0, QTableWidgetItem(doubleList[i][0]))
-                    self.tableWidget2.setItem(i, 1, QTableWidgetItem(doubleList[i][1]))
-                    self.tableWidget2.setItem(i, 2, QTableWidgetItem(doubleList[i][2]))
+                for i in 
+                self.tableWidget2.setItem(i, j, QTableWidgetItem(c))
 
                 QMessageBox.about(self, "일괄업로드", "업로드를 완료하였지만, 일부 중복데이터가 존재합니다.\n아래 파일을 확인하세요.\n"+outputFile)
 

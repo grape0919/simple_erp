@@ -80,8 +80,7 @@ class Ui_MainWindow(QMainWindow):
         self.tabWidget.addTab(self.tab2, "중복 회원")
 
         self.label_updateDate = QLabel(self.tab2)
-        self.label_updateDate.setGeometry(QRect(20, 0, 250, 35))
-        self.label_updateDate.setStyleSheet("color: #535353;")
+        self.label_updateDate.setGeometry(QRect(0, 0, 250, 35))
 
         self.tableWidget2 = QTableWidget(self.tab2)
         self.tableWidget2.setGeometry(QRect(0, 30, self.tabWidget.size().width()-5, self.tabWidget.size().height()-55))
@@ -89,7 +88,7 @@ class Ui_MainWindow(QMainWindow):
         self.tableWidget2.setRowCount(0)
         self.tableWidget2.setSelectionBehavior(QAbstractItemView.SelectRows)
         
-        self.tableWidget2.setHorizontalHeaderLabels(["회원 ID", "현재 단톡방", "중복 단톡방"])
+        self.tableWidget.setHorizontalHeaderLabels(["회원 ID", "현재 단톡방", "중복 단톡방"])
         
         
         self.edit_search = QLineEdit(self.centralwidget)
@@ -116,7 +115,6 @@ class Ui_MainWindow(QMainWindow):
         self.button_del.setText("회원 삭제")
         self.button_upload.setText("일괄 업로드")
         self.button_search.setText("검색")
-        self.label_updateDate.setText("업로드 날짜 : ")
         self.edit_search.setPlaceholderText("회원 ID")
         # self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), "Tab 1")
         # self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), "Tab 2")

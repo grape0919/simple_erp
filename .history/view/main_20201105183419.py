@@ -89,7 +89,7 @@ class Ui_MainWindow(QMainWindow):
         self.tableWidget2.setRowCount(0)
         self.tableWidget2.setSelectionBehavior(QAbstractItemView.SelectRows)
         
-        self.tableWidget2.setHorizontalHeaderLabels(["회원 ID", "현재 단톡방", "중복 단톡방"])
+        self.tableWidget.setHorizontalHeaderLabels(["회원 ID", "현재 단톡방", "중복 단톡방"])
         
         
         self.edit_search = QLineEdit(self.centralwidget)

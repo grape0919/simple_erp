@@ -28,26 +28,24 @@ def excute_sql(sql):
 def checkID(id):
     print("CHECK ID")
     if(id != None):
-        with closing(connect_db()) as db:
-            cur = db.cursor().execute("select MBR_ID, TALK from MBR_INFO where MBR_ID ='{ID}'".format(ID=id.strip()))
-            row = cur.fetchall()
-            
-            print("!@#!@# row : ", row)
-            print("!@#!@# id : ", id)
-            if len(row) > 0:
-                id = row[0][0]
-            else:
-                id = None
-            
-            db.close()
-            print("id : ", id)
-            if id == None:
-                return (False, '')
-            else :
-                talk = row[0][1]
-                return (True, talk)
-    else:
-        return None
+    with closing(connect_db()) as db:
+        cur = db.cursor().execute("select MBR_ID, TALK from MBR_INFO where MBR_ID ='{ID}'".format(ID=id.strip()))
+        row = cur.fetchall()
+        
+        print("!@#!@# row : ", row)
+        print("!@#!@# id : ", id)
+        if len(row) > 0:
+            id = row[0][0]
+        else:
+            id = None
+        
+        db.close()
+        print("id : ", id)
+        if id == None:
+            return (False, '')
+        else :
+            talk = row[0][1]
+            return (True, talk)
 
 def selectAll():
     print("select MBR info")

@@ -46,8 +46,6 @@ def checkID(id):
             else :
                 talk = row[0][1]
                 return (True, talk)
-    else:
-        return None
 
 def selectAll():
     print("select MBR info")
