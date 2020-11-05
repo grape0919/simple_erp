@@ -20,6 +20,7 @@ class WindowClass(Ui_MainWindow) :
         self.button_del.clicked.connect(self.delMbr)
         self.button_modi.clicked.connect(self.modiMbr)
         self.button_upload.clicked.connect(self.upload)
+        self.button_search.clicked.connect(self.search)
 
         if not self.showData():
             self.showData()
@@ -240,6 +241,19 @@ class WindowClass(Ui_MainWindow) :
         for i, d in enumerate(datas):
             for j, c in enumerate(d):
                 self.tableWidget.setItem(i, j, QTableWidgetItem(c))
+
+    def search(self):
+        print("search")
+        search_id = self.edit_search.text()
+        if search_id != "":
+            for i in range(self.tableWidget.rowCount()):
+                if(self.tableWidget.item(i,0).text() == self.edit_search.text()):
+                    self.tableWidget.setCurrentCell(i,1)
+                    return
+            
+            QMessageBox.warning(self, "검색", "해당 ID가 존재하지 않습니다.")
+        else:
+            QMessageBox.warning(self, "검색", "검색할 ID를 입력해주세요.")
 
 if __name__ == "__main__" :
     #QApplication : 프로그램을 실행시켜주는 클래스

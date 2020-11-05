@@ -28,7 +28,7 @@ def excute_sql(sql):
 def checkID(id):
     print("CHECK ID")
     with closing(connect_db()) as db:
-        cur = db.cursor().execute("select MBR_ID, TALK from MBR_INFO where MBR_ID ='{ID}'".format(ID=id))
+        cur = db.cursor().execute("select MBR_ID, TALK from MBR_INFO where MBR_ID ='{ID}'".format(ID=id.strip()))
         row = cur.fetchall()
         
         print("!@#!@# row : ", row)
@@ -51,7 +51,7 @@ def selectAll():
     try:
         with closing(connect_db()) as db:
             cur = db.cursor().execute("select MBR_ID, TALK, COIN, PURCHASE, DEPOSIT, SALE, WITHDRAW, RESERVE, \
-                TOTAL_PUR, TOTAL_SAL, REVENUE, RATING, WALLET from MBR_INFO")
+                TOTAL_PUR, TOTAL_SAL, REVENUE, RATING, WALLET from MBR_INFO order by TALK")
             row = cur.fetchall()
 
             return row
@@ -64,7 +64,7 @@ def selectMBR(id):
     print("select MBR info : ", id)
     with closing(connect_db()) as db:
         cur = db.cursor().execute("select MBR_ID, TALK, COIN, PURCHASE, DEPOSIT, SALE, WITHDRAW, RESERVE, \
-            TOTAL_PUR, TOTAL_SAL, REVENUE, RATING, WALLET from MBR_INFO where MBR_ID ='{ID}'".format(ID=id))
+            TOTAL_PUR, TOTAL_SAL, REVENUE, RATING, WALLET from MBR_INFO where MBR_ID ='{ID}'".format(ID=id.strip()))
         row = cur.fetchall()
 
         return row[0]

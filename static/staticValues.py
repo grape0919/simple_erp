@@ -6,6 +6,7 @@ buttonSize = QSize(100,40)
 #버튼 폰트
 buttonFont = QFont()
 buttonFont.setBold(False)
+buttonFont.setFamily("NanumGothic")
 #버튼 styleSheet
 grayButtonStyleSheet = "color: white;"
 grayButtonStyleSheet += "background-color: #5E5E5E;"
