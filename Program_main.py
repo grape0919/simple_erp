@@ -8,7 +8,7 @@ import rdbms.rdbms as rdbms
 from data.mbrInfo import Member
 from view import QtUtil
 import openpyxl
-
+from datetime import datetime
 
 class WindowClass(Ui_MainWindow) :
 
@@ -147,6 +147,8 @@ class WindowClass(Ui_MainWindow) :
                     self.tableWidget2.setItem(i, 1, QTableWidgetItem(doubleList[i][1]))
                     self.tableWidget2.setItem(i, 2, QTableWidgetItem(doubleList[i][2]))
 
+                self.label_updateDate.setText("업로드 날짜 : "+datetime.today().strftime("%Y년 %m월 %d일 %H:%M:%S".encode('unicode-escape').decode()
+    ).encode().decode('unicode-escape'))
                 QMessageBox.about(self, "일괄업로드", "업로드를 완료하였지만, 일부 중복데이터가 존재합니다.\n아래 파일을 확인하세요.\n"+outputFile)
 
     def closeEvent(self, event):
