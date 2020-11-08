@@ -33,7 +33,7 @@ class Ui_MainWindow(QMainWindow):
         MainWindow.setFont(font)
         self.centralwidget = QWidget(MainWindow)
         self.label = QLabel(self.centralwidget)
-        self.label.setGeometry(QRect(20, 20, 130, 35))
+        self.label.setGeometry(QRect(20, 20, 300, 35))
         font = QFont()
         font.setFamily("NanumGothic")
         font.setPointSize(18)
@@ -109,8 +109,8 @@ class Ui_MainWindow(QMainWindow):
         QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
-        MainWindow.setWindowTitle("Pickbang")
-        self.label.setText("Pickbang")
+        MainWindow.setWindowTitle("Simple MANAGER")
+        self.label.setText("Simple MANAGER")
         self.button_add.setText("회원추가")
         self.button_modi.setText("회원 정보 수정")
         self.button_del.setText("회원 삭제")
